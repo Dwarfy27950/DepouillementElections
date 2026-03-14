@@ -54,13 +54,21 @@ Blanc
 const url = "https://script.google.com/macros/s/AKfycbz7VcjH8qNR7gU-4Ea-6daw9BZEnKfok7zdr_Luiz9-Alxkf6MbG3Wl5iGOOrsOgyex/exec";
 
 function add(v){
-fetch(url+"?action=add&var="+v)
-.then(r=>r.text())
-.then(n=>{
-document.getElementById(v).innerText=n;
-});
-}
 
+  const el = document.getElementById(v);
+
+  // incrément instantané à l'écran
+  let value = parseInt(el.innerText) + 1;
+  el.innerText = value;
+
+  // envoi au serveur en arrière-plan
+  fetch(url + "?action=add&var=" + v)
+    .then(r=>r.text())
+    .then(n=>{
+      el.innerText = n; // synchronisation
+    });
+
+}
 function load(v){
 fetch(url+"?action=get&var="+v)
 .then(r=>r.text())
