@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+button{
+  width:90%;
+  height:80px;
+  font-size:30px;
+  margin:10px;
+}
+</style>
+</head>
 
+<body>
+
+<button onclick="add('cafe')">☕ Café</button>
+<button onclick="add('eau')">💧 Eau</button>
+<button onclick="add('soda')">🥤 Soda</button>
+
+<script>
+
+const url = "COLLE_TON_URL_SCRIPT_ICI";
+
+function add(v){
+  fetch(url + "?var=" + v);
+}
+
+</script>
+
+</body>
+</html>
