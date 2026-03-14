@@ -1,31 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
-button{
-  width:90%;
-  height:80px;
-  font-size:30px;
-  margin:10px;
+
+body{
+font-family:sans-serif;
+text-align:center;
 }
+
+button{
+width:90%;
+height:90px;
+font-size:28px;
+margin:10px;
+}
+
+.count{
+font-size:22px;
+margin-bottom:20px;
+}
+
 </style>
+
 </head>
 
 <body>
 
-<button onclick="add('VoixLB')">Voix Loïc BUISSON</button>
-<button onclick="add('VoixFR')">Voix Florence ROPARS</button>
-<button onclick="add('Nul')">Nul</button>
-<button onclick="add('Blanc')">Blanc</button>
+<button onclick="add('VoixLB')">
+Voix Loïc BUISSON
+<div class="count" id="VoixLB">0</div>
+</button>
+
+<button onclick="add('VoixFR')">
+Voix Florence ROPARS
+<div class="count" id="VoixFR">0</div>
+</button>
+
+<button onclick="add('Nul')">
+Nul
+<div class="count" id="Nul">0</div>
+</button>
+
+<button onclick="add('Blanc')">
+Blanc
+<div class="count" id="Blanc">0</div>
+</button>
 
 <script>
 
-const url = "COLLE_TON_URL_SCRIPT_ICI";
+const url = "COLLE_TON_URL_APPS_SCRIPT";
 
 function add(v){
-  fetch(url + "?var=" + v);
+fetch(url+"?action=add&var="+v)
+.then(r=>r.text())
+.then(n=>{
+document.getElementById(v).innerText=n;
+});
 }
+
+function load(v){
+fetch(url+"?action=get&var="+v)
+.then(r=>r.text())
+.then(n=>{
+document.getElementById(v).innerText=n;
+});
+}
+
+["VoixLB","VoixFR","Nul", "Blanc"].forEach(load);
 
 </script>
 
