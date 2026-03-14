@@ -29,14 +29,14 @@ margin-bottom:20px;
 
 <body>
 
-<button onclick="add('VoixLB')">
+<button onclick="add('LB')">
 Voix Loïc BUISSON
-<div class="count" id="VoixLB">0</div>
+<div class="count" id="LB">0</div>
 </button>
 
-<button onclick="add('VoixFR')">
+<button onclick="add('FR')">
 Voix Florence ROPARS
-<div class="count" id="VoixFR">0</div>
+<div class="count" id="FR">0</div>
 </button>
 
 <button onclick="add('Nul')">
@@ -51,7 +51,7 @@ Blanc
 
 <script>
 
-const url = "COLLE_TON_URL_APPS_SCRIPT";
+const url = "https://script.google.com/macros/s/AKfycbz7VcjH8qNR7gU-4Ea-6daw9BZEnKfok7zdr_Luiz9-Alxkf6MbG3Wl5iGOOrsOgyex/exec";
 
 function add(v){
 fetch(url+"?action=add&var="+v)
